@@ -102,7 +102,7 @@ const backendStatus = ref(false)
 
 const checkBackend = async () => {
   try {
-    const res = await request.get('/health')
+    const res = await request.get('/api/health')
     if (res.code === 200) {
       backendStatus.value = true
     }

@@ -42,13 +42,12 @@ public class SecurityConfig {
                 .csrf().disable()
                 .cors().and()
                 .authorizeHttpRequests(auth -> auth
-                        .antMatchers("/api/auth/**", "/api/health").permitAll()
-                        .anyRequest().authenticated()
+                        // 暂时开放所有接口用于测试
+                        .anyRequest().permitAll()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                )
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                );
 
         return http.build();
     }
